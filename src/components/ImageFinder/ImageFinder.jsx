@@ -45,7 +45,7 @@ export const ImageFinder = () => {
           setStatus(Status.REJECTED);
 
           return;
-        } else {
+        } else if (page === 1) {
           toast.info(`Hooray! We found "${data.total}" images`);
         }
 
