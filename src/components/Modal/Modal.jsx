@@ -4,17 +4,17 @@ import css from './Modal.module.css';
 
 export const Modal = ({ onCloseModal, children }) => {
   useEffect(() => {
+    const handleEscape = e => {
+      if (e.code === 'Escape') {
+        onCloseModal();
+      }
+    };
+
     window.addEventListener('keydown', handleEscape);
     return () => {
       window.removeEventListener('keydown', handleEscape);
     };
-  });
-
-  const handleEscape = e => {
-    if (e.code === 'Escape') {
-      onCloseModal();
-    }
-  };
+  }, [onCloseModal]);
 
   const handleCloseModal = e => {
     if (e.target === e.currentTarget) {
