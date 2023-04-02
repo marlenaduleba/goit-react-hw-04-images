@@ -12,6 +12,7 @@ export const Searchbar = ({ onSubmit }) => {
   const handleFormSubmit = e => {
     e.preventDefault();
     onSubmit(search);
+    reset();
   };
 
   const reset = () => setSearch('');
