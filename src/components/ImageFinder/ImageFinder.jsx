@@ -24,7 +24,6 @@ export const ImageFinder = () => {
   const [page, setPage] = useState(1);
   const [totalImages, setTotalImages] = useState(null);
   const [images, setImages] = useState([]);
-  const [error, setError] = useState(null);
   const [status, setStatus] = useState(Status.IDLE);
 
   useEffect(() => {
@@ -41,7 +40,6 @@ export const ImageFinder = () => {
           toast.info(
             `Sorry, there are no images matching your search query. Please try again.`
           );
-          setError('not found');
           setStatus(Status.REJECTED);
 
           return;
@@ -55,7 +53,6 @@ export const ImageFinder = () => {
         setStatus(Status.RESOLVED);
       })
       .catch(error => {
-        setError(error.message);
         setStatus(Status.REJECTED);
       });
   }, [page, search]);
